@@ -49,7 +49,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString, o => 
         o.EnableRetryOnFailure(
             maxRetryCount: 5, 
-            maxRetryDelay: TimeSpan.FromSeconds(10), 
+            maxRetryDelay: TimeSpan.FromSeconds(30), 
             errorCodesToAdd: null))
 );
 
