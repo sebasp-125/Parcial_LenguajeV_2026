@@ -8,9 +8,7 @@ namespace Api_Shoes_v1.Models
 
         public DbSet<Shoe> Shoes { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Worker> Wokers { get; set; }
+        public DbSet<Worker> Workers { get; set; }
         public DbSet<Customer> Customers { get; set; }
-
-
     }
 }

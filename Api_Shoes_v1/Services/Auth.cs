@@ -57,5 +57,12 @@ namespace Api_Shoes_v1.Services
 
             return tokenHandler.WriteToken(tokenConfig);
         }
+
+        public async Task<Customer> RegisterCustomer(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            await _context.SaveChangesAsync();
+            return customer;
+        }
     }
 }

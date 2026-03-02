@@ -41,10 +41,17 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddScoped<IAuth, Auth>();
 builder.Services.AddScoped<IProductos, Products>();
+builder.Services.AddScoped<IWorker, WorkerService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseNpgsql(connectionString, o => 
+        o.EnableRetryOnFailure(
+            maxRetryCount: 5, 
+            maxRetryDelay: TimeSpan.FromSeconds(10), 
+            errorCodesToAdd: null))
+);
 
 var jwtKey = builder.Configuration["Jwt:Key"]; 
 var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
