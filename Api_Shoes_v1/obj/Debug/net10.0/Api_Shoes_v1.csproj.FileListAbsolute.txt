@@ -162,3 +162,4 @@ C:\Users\jmontaño\source\repos\Parcial_LenguajeV_2026\Api_Shoes_v1\obj\Debug\ne
 C:\Users\jmontaño\source\repos\Parcial_LenguajeV_2026\Api_Shoes_v1\obj\Debug\net10.0\Api_Shoes_v1.pdb
 C:\Users\jmontaño\source\repos\Parcial_LenguajeV_2026\Api_Shoes_v1\obj\Debug\net10.0\Api_Shoes_v1.genruntimeconfig.cache
 C:\Users\jmontaño\source\repos\Parcial_LenguajeV_2026\Api_Shoes_v1\obj\Debug\net10.0\ref\Api_Shoes_v1.dll
+C:\Users\jmontaño\source\repos\Parcial_LenguajeV_2026\Api_Shoes_v1\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

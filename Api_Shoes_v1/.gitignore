@@ -1,0 +1,30 @@
+## Directorios de compilación y salida de .NET
+[Bb]in/
+[Oo]bj/
+
+## Archivos de usuario y caché de Visual Studio
+.vs/
+*.user
+*.userosscache
+*.sln.docuser
+
+## Herramientas de Entity Framework y migraciones temporales
+*.db
+*.db-shm
+*.db-wal
+
+## Configuración de VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## Archivos de sistema
+.DS_Store
+Thumbs.db
+
+## Publicación y logs
+publish/
+*.log
