@@ -41,7 +41,8 @@ namespace Api_Shoes_v1.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.Completename)
+                new Claim(ClaimTypes.Name, user.Completename),
+                new Claim(ClaimTypes.Role, user.Rol?.Tiporol ?? "")
             };
 
             var tokenExpiration = DateTime.UtcNow.AddMinutes(15);
