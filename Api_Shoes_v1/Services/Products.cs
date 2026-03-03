@@ -1,4 +1,7 @@
 ﻿using Api_Shoes_v1.RealModels;
+using Api_Shoes_v1.Dtos.Products;
+using Api_Shoes_v1.Dtos.Categories;
+using Api_Shoes_v1.Dtos.Images;
 using Api_Shoes_v1.Services.IService;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,9 +16,33 @@ namespace Api_Shoes_v1.Services
             _context = context;
         }
 
-        public async Task<List<Shoe>> GetAllProducts()
+        public async Task<List<ProductResponseDto>> GetAllProducts()
         {
-            return await _context.Shoes.ToListAsync();
+            var products = await _context.Shoes
+                .Include(s => s.Category)
+                .Include(s => s.Imageofshoes)
+                .ToListAsync();
+
+            return products.Select(s => new ProductResponseDto
+            {
+                Id = s.Id,
+                Model = s.Model,
+                Size = s.Size,
+                Price = s.Price,
+                Categoryid = s.Categoryid,
+                Category = s.Category != null ? new CategoryResponseDto
+                {
+                    Id = s.Category.Id,
+                    Name = s.Category.Name
+                } : null,
+                Imageofshoes = s.Imageofshoes.Select(i => new ImageOfShoeResponseDto
+                {
+                    Id = i.Id,
+                    Imagetype = i.Imagetype,
+                    Esprincipal = i.Esprincipal,
+                    Url = i.Url
+                }).ToList()
+            }).ToList();
         }
 
         public async Task<Shoe> GetProductById(int id)

@@ -14,4 +14,8 @@ public partial class Customer
     public string? Phonenumber { get; set; }
 
     public string Password { get; set; } = null!;
+
+    public int? Rolid { get; set; }
+
+    public virtual Role? Rol { get; set; }
 }

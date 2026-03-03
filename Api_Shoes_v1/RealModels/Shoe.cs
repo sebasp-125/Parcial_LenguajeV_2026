@@ -16,4 +16,6 @@ public partial class Shoe
     public int Categoryid { get; set; }
 
     public virtual Category Category { get; set; } = null!;
+
+    public virtual ICollection<Imageofshoe> Imageofshoes { get; set; } = new List<Imageofshoe>();
 }

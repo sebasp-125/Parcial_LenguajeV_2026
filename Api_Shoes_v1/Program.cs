@@ -10,7 +10,22 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
@@ -43,6 +58,7 @@ builder.Services.AddScoped<IAuth, Auth>();
 builder.Services.AddScoped<IProductos, Products>();
 builder.Services.AddScoped<IWorker, WorkerService>();
 builder.Services.AddScoped<ICategory, CategoryService>();
+builder.Services.AddScoped<IImageOfShoe, ImageOfShoeService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -87,6 +103,8 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication(); 
 app.UseAuthorization();  

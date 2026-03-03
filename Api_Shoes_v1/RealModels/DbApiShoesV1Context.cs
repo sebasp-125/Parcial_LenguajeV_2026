@@ -19,6 +19,10 @@ public partial class DbApiShoesV1Context : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
+    public virtual DbSet<Imageofshoe> Imageofshoes { get; set; }
+
+    public virtual DbSet<Role> Roles { get; set; }
+
     public virtual DbSet<Shoe> Shoes { get; set; }
 
     public virtual DbSet<Worker> Workers { get; set; }
@@ -62,6 +66,48 @@ public partial class DbApiShoesV1Context : DbContext
             entity.Property(e => e.Phonenumber)
                 .HasMaxLength(20)
                 .HasColumnName("phonenumber");
+            entity.Property(e => e.Rolid).HasColumnName("rolid");
+
+            entity.HasOne(d => d.Rol).WithMany(p => p.Customers)
+                .HasForeignKey(d => d.Rolid)
+                .HasConstraintName("fk_customers_roles");
+        });
+
+        modelBuilder.Entity<Imageofshoe>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("imageofshoes_pkey");
+
+            entity.ToTable("imageofshoes");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Esprincipal)
+                .HasDefaultValue(false)
+                .HasColumnName("esprincipal");
+            entity.Property(e => e.Idshoe).HasColumnName("idshoe");
+            entity.Property(e => e.Imagetype)
+                .HasMaxLength(100)
+                .HasColumnName("imagetype");
+            entity.Property(e => e.Url).HasColumnName("url");
+
+            entity.HasOne(d => d.IdshoeNavigation).WithMany(p => p.Imageofshoes)
+                .HasForeignKey(d => d.Idshoe)
+                .HasConstraintName("fk_shoes");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.Idrol).HasName("roles_pkey");
+
+            entity.ToTable("roles");
+
+            entity.Property(e => e.Idrol).HasColumnName("idrol");
+            entity.Property(e => e.Createdat)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("createdat");
+            entity.Property(e => e.Tiporol)
+                .HasMaxLength(100)
+                .HasColumnName("tiporol");
         });
 
         modelBuilder.Entity<Shoe>(entity =>

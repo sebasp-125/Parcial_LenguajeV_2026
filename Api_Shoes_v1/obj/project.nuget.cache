@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7I1n9KLhU9o=",
+  "dgSpecHash": "DChoba3GFp0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jmontaño\\source\\repos\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\Api_Shoes_v1.csproj",
+  "projectFilePath": "c:\\Users\\jmontaño\\source\\repos\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\Api_Shoes_v1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jmontaño\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\jmontaño\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.5\\microsoft.aspnetcore.authentication.jwtbearer.8.0.5.nupkg.sha512",
