@@ -1,4 +1,4 @@
-﻿using Api_Shoes_v1.Models;
+﻿using Api_Shoes_v1.RealModels;
 using Api_Shoes_v1.Services.IService;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,9 +6,9 @@ namespace Api_Shoes_v1.Services
 {
     public class Products : IProductos
     {
-        private readonly AppDbContext _context;
+        private readonly DbApiShoesV1Context _context;
 
-        public Products(AppDbContext context)
+        public Products(DbApiShoesV1Context context)
         {
             _context = context;
         }

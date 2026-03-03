@@ -1,5 +1,5 @@
 ﻿using Api_Shoes_v1.Dtos.Customers;
-using Api_Shoes_v1.Models;
+using Api_Shoes_v1.RealModels;
 
 namespace Api_Shoes_v1.Services.IService
 {

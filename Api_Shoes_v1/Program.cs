@@ -1,4 +1,4 @@
-using Api_Shoes_v1.Models;
+using Api_Shoes_v1.RealModels;
 using Api_Shoes_v1.Services;
 using Api_Shoes_v1.Services.IService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -45,7 +45,7 @@ builder.Services.AddScoped<IWorker, WorkerService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<DbApiShoesV1Context>(options =>
     options.UseNpgsql(connectionString, o => 
         o.EnableRetryOnFailure(
             maxRetryCount: 5, 

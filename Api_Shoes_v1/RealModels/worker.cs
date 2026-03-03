@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Api_Shoes_v1.RealModels;
 
-public partial class worker
+public partial class Worker
 {
-    public int id { get; set; }
+    public int Id { get; set; }
 
-    public string? complete_name { get; set; }
+    public string? CompleteName { get; set; }
 
-    public string? email { get; set; }
+    public string? Email { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using Api_Shoes_v1.Models;
+﻿using Api_Shoes_v1.RealModels;
+using Api_Shoes_v1.Dtos.Products;
 using Api_Shoes_v1.Services.IService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -26,12 +27,20 @@ namespace Api_Shoes_v1.Controllers
         }
 
         [HttpPost("AddProduct")]
-        public async Task<IActionResult> AddProduct([FromBody] Shoe shoe)
+        public async Task<IActionResult> AddProduct([FromBody] ShoeCreateDto shoeDto)
         {
-            if (shoe == null)
+            if (shoeDto == null)
             {
                 return BadRequest("El producto es nulo.");
             }
+
+            var shoe = new Shoe
+            {
+                Model = shoeDto.Model,
+                Size = shoeDto.Size,
+                Price = shoeDto.Price,
+                Categoryid = shoeDto.Categoryid
+            };
 
             var createdShoe = await _productosService.CreateProduct(shoe);
             return Ok(createdShoe);

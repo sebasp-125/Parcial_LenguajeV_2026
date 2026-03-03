@@ -1,7 +1,7 @@
 ﻿using Api_Shoes_v1.Dtos.Customers;
 using Api_Shoes_v1.Services.IService;
 using Microsoft.EntityFrameworkCore;
-using Api_Shoes_v1.Models;
+using Api_Shoes_v1.RealModels;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,10 +11,10 @@ namespace Api_Shoes_v1.Services
 {
     public class Auth : IAuth
     {
-        private readonly AppDbContext _context;
+        private readonly DbApiShoesV1Context _context;
         private readonly IConfiguration _config;
 
-        public Auth(AppDbContext context, IConfiguration config)
+        public Auth(DbApiShoesV1Context context, IConfiguration config)
         {
             _context = context;
             _config = config; 
@@ -40,7 +40,7 @@ namespace Api_Shoes_v1.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.CompleteName)
+                new Claim(ClaimTypes.Name, user.Completename)
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor

@@ -3266,23 +3266,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PERSONAL\\.nuget\\packages\\": {},
+    "C:\\Users\\jmontaño\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PERSONAL\\Desktop\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\Api_Shoes_v1.csproj",
+      "projectUniqueName": "C:\\Users\\jmontaño\\source\\repos\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\Api_Shoes_v1.csproj",
       "projectName": "Api_Shoes_v1",
-      "projectPath": "C:\\Users\\PERSONAL\\Desktop\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\Api_Shoes_v1.csproj",
-      "packagesPath": "C:\\Users\\PERSONAL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PERSONAL\\Desktop\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\obj\\",
+      "projectPath": "C:\\Users\\jmontaño\\source\\repos\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\Api_Shoes_v1.csproj",
+      "packagesPath": "C:\\Users\\jmontaño\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jmontaño\\source\\repos\\Parcial_LenguajeV_2026\\Api_Shoes_v1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\PERSONAL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jmontaño\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3291,7 +3291,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

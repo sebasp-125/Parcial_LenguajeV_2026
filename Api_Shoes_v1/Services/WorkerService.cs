@@ -1,13 +1,13 @@
-using Api_Shoes_v1.Models;
+using Api_Shoes_v1.RealModels;
 using Api_Shoes_v1.Services.IService;
 
 namespace Api_Shoes_v1.Services
 {
     public class WorkerService : IWorker
     {
-        private readonly AppDbContext _context;
+        private readonly DbApiShoesV1Context _context;
 
-        public WorkerService(AppDbContext context)
+        public WorkerService(DbApiShoesV1Context context)
         {
             _context = context;
         }
