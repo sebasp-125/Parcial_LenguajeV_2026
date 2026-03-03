@@ -1,0 +1,39 @@
+<header class="bg-gray-900 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-16">
+      
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl font-bold text-indigo-400">Mercado</span>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
+        <a (click)="irLanding()" class="hover:text-indigo-400 transition">Inicio</a>
+  
+      </nav>
+
+      <div class="hidden md:block">
+        @if (Admin) {
+          <button (click)="irDashboard()" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-xl transition">
+            Admin Dashboard
+          </button>
+        }
+        <button (click)="logout()" class="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600 transition">
+            Cerrar sesión
+        </button>
+      </div>
+
+      <div class="md:hidden">
+        <button class="focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" 
+               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M4 6h16M4 12h16M4 18h16">
+            </path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
