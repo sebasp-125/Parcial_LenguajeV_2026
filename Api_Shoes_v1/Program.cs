@@ -42,6 +42,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<IAuth, Auth>();
 builder.Services.AddScoped<IProductos, Products>();
 builder.Services.AddScoped<IWorker, WorkerService>();
+builder.Services.AddScoped<ICategory, CategoryService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
