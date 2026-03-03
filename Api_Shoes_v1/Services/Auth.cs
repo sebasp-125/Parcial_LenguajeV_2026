@@ -20,10 +20,11 @@ namespace Api_Shoes_v1.Services
             _config = config; 
         }
 
-        public async Task<string> LogIn(AuthDto auth)
+        public async Task<AuthResponseDto?> LogIn(AuthDto auth)
         {
             // Si usas BCrypt, aquí solo buscas por Email y luego verificas el hash (Andres aca es donde debes de colocar todo lo de hash) 
             var user = await _context.Customers
+                .Include(c => c.Rol)
                 .FirstOrDefaultAsync(w => w.Email == auth.Email && w.Password == auth.Password);
 
             if (user == null) return null; 
@@ -31,7 +32,7 @@ namespace Api_Shoes_v1.Services
             return GenerarToken(user);
         }
 
-        private string GenerarToken(Customer user)
+        private AuthResponseDto GenerarToken(Customer user)
         {
             var jwtKey = _config["Jwt:Key"]; 
             var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
@@ -43,10 +44,11 @@ namespace Api_Shoes_v1.Services
                 new Claim(ClaimTypes.Name, user.Completename)
             };
 
+            var tokenExpiration = DateTime.UtcNow.AddMinutes(15);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(15),
+                Expires = tokenExpiration,
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(keyBytes),
                     SecurityAlgorithms.HmacSha256Signature)
@@ -55,7 +57,12 @@ namespace Api_Shoes_v1.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenConfig = tokenHandler.CreateToken(tokenDescriptor);
 
-            return tokenHandler.WriteToken(tokenConfig);
+            return new AuthResponseDto 
+            {
+                Token = tokenHandler.WriteToken(tokenConfig),
+                Rol = user.Rol?.Tiporol,
+                TokenTime = tokenExpiration
+            };
         }
 
         public async Task<Customer> RegisterCustomer(Customer customer)

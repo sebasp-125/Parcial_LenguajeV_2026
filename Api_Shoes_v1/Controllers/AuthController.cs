@@ -19,14 +19,14 @@ namespace Api_Shoes_v1.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Auth([FromBody] AuthDto auth)
         {
-            var token = await _authService.LogIn(auth);
+            var authResponse = await _authService.LogIn(auth);
 
-            if (token == null)
+            if (authResponse == null)
             {
                 return Unauthorized(new { message = "Correo o contraseña incorrectos" });
             }
 
-            return Ok(new { token = token });
+            return Ok(authResponse);
         }
     }
 }
