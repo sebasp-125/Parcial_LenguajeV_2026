@@ -22,7 +22,7 @@ export const routes: Routes = [
     path: '',
     component: Layout,
     children: [
-      { path: 'landing', component: Landing },
+      { path: 'landing', component: Landing, canActivate: [authGuard] },
       { path: 'dashboard', component: Dashboard, canActivate: [authGuard] } 
     ]
   }
