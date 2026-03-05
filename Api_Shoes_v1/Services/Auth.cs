@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using BCrypt.Net;
 
 namespace Api_Shoes_v1.Services
 {
@@ -22,12 +23,16 @@ namespace Api_Shoes_v1.Services
 
         public async Task<AuthResponseDto?> LogIn(AuthDto auth)
         {
-            // Si usas BCrypt, aquí solo buscas por Email y luego verificas el hash (Andres aca es donde debes de colocar todo lo de hash) 
+            // Buscar usuario solo por email
             var user = await _context.Customers
                 .Include(c => c.Rol)
-                .FirstOrDefaultAsync(w => w.Email == auth.Email && w.Password == auth.Password);
+                .FirstOrDefaultAsync(w => w.Email == auth.Email);
 
-            if (user == null) return null; 
+            // Verificar si el usuario existe y la contraseña coincide con el hash
+            if (user == null || !BCrypt.Net.BCrypt.Verify(auth.Password, user.Password))
+            {
+                return null;
+            }
 
             return GenerarToken(user);
         }
@@ -68,6 +73,9 @@ namespace Api_Shoes_v1.Services
 
         public async Task<Customer> RegisterCustomer(Customer customer)
         {
+            // Hashear la contraseña con salting automático
+            customer.Password = BCrypt.Net.BCrypt.HashPassword(customer.Password);
+
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
             return customer;
