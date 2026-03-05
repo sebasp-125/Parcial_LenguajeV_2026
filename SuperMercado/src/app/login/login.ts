@@ -41,9 +41,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => {
         this.authService.agregarToken(res.token);
-
         this.router.navigate(['/landing']);
-
         this.loading = false;
       },
       error: () => {

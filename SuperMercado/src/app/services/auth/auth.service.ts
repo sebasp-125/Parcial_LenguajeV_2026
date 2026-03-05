@@ -6,8 +6,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { LoginResponse } from '../../model/interface/loginInterface/loginResponse.interface';
 import { LoginRequest } from '../../model/interface/loginInterface/loginRequest.interface';
-import { Router } from '@angular/router';
-
 
 @Injectable({ providedIn: 'root'})
 export class AuthService {
@@ -16,7 +14,7 @@ export class AuthService {
   private readonly apiUrl = environment.apiUrl;
   private platformId = inject(PLATFORM_ID);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   login(data: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/Auth/login`, data);

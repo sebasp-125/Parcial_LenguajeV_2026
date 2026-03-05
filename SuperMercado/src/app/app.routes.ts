@@ -3,10 +3,9 @@ import { LoginComponent } from './login/login';
 import { Layout } from './layout/layout';
 import { Dashboard } from './dashboard/dashboard';
 import { Landing } from './landing/landing';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-
-
   {
     path: '',
     redirectTo: 'login',
@@ -24,7 +23,7 @@ export const routes: Routes = [
     component: Layout,
     children: [
       { path: 'landing', component: Landing },
-      { path: 'dashboard', component: Dashboard } 
+      { path: 'dashboard', component: Dashboard, canActivate: [authGuard] } 
     ]
   }
 
