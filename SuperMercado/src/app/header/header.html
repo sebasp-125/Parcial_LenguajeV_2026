@@ -1,0 +1,74 @@
+<header class="relative bg-red-900 text-white shadow-lg overflow-hidden">
+
+  <div 
+    class="absolute inset-0 bg-cover bg-center scale-110 opacity-40"
+    style="background-image:url('https://plus.unsplash.com/premium_photo-1675367606936-7bb2285696d9?q=80&w=1223&auto=format&fit=crop');">
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+
+    <div class="flex items-center justify-between h-16">
+
+      <div class="flex items-center space-x-2 cursor-pointer" (click)="irLanding()">
+        <span class="text-2xl font-black tracking-tight">
+          ShoeStore
+        </span>
+      </div>
+
+
+      <nav class="hidden md:flex items-center space-x-8 font-medium">
+
+        <a 
+          (click)="irLanding()"
+          class="cursor-pointer hover:underline transition">
+          Inicio
+        </a>
+
+      </nav>
+
+
+      <div class="hidden md:flex items-center space-x-4">
+
+        @if (Admin) {
+          <button
+            (click)="irDashboard()"
+            class="bg-white text-red-900 px-4 py-2 rounded-xl font-semibold hover:bg-gray-200 transition shadow">
+            Admin Dashboard
+          </button>
+        }
+
+        <button
+          (click)="logout()"
+          class="bg-red-700 px-4 py-2 rounded-xl hover:bg-red-800 transition font-semibold shadow">
+          Cerrar sesión
+        </button>
+
+      </div>
+
+
+      <div class="md:hidden">
+        <button class="focus:outline-none">
+
+          <svg 
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+
+            <path 
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16">
+            </path>
+
+          </svg>
+
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
